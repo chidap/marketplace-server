@@ -1,11 +1,19 @@
 import express from "express";
-//import router from './routes/auth';
 import { readdirSync } from "fs";
 import cors  from 'cors';
 import mongoose from 'mongoose';
 
 const morgan = require("morgan");
 require("dotenv").config();
+
+/**
+ * possible issues
+ * If you get data/undefined - to fix this make sure to use body-parser or use express.json()
+ * app.use(express.json())
+ * 
+ * If you get CORs error -  to fix this makwe sure you have applied cors in server.js
+ * app.use(cors())
+ */
 
 const app = express();
 
@@ -18,9 +26,11 @@ mongoose.connect(process.env.MONGO_URI, {
 })
     .then(()=> console.log("DB Connected"))
     .catch((err) => console.log("DB Connection error ", err));
-///// middlewares
+
+ //////////////   ///// middlewares
 app.use(cors());
 app.use(morgan("dev"));
+app.use(express.json());
 
 ///// Route middleware
 //app.use('/api', router);

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/chidap/marketplace-server#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
